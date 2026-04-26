@@ -6,7 +6,6 @@ const CONTACT_FORM_ENDPOINT = "https://formspree.io/f/mdayjvde";
 
 export default function MachinConsultingWebsite() {
   const [page, setPage] = useState("home");
-  const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [status, setStatus] = useState({ type: "idle", message: "" });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -109,12 +108,15 @@ export default function MachinConsultingWebsite() {
     "Combines analysis, product thinking, and delivery oversight",
   ];
 
-  const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    const submittedForm = {
+      name: formData.get("name") || "",
+      email: formData.get("email") || "",
+      message: formData.get("message") || "",
+    };
     setIsSubmitting(true);
     setStatus({ type: "idle", message: "" });
 
@@ -130,11 +132,11 @@ export default function MachinConsultingWebsite() {
           Accept: "application/json",
         },
         body: JSON.stringify({
-          name: form.name,
-          email: form.email,
-          message: form.message,
+          name: submittedForm.name,
+          email: submittedForm.email,
+          message: submittedForm.message,
           _subject: "New enquiry - Machin Consulting Services",
-          _replyto: form.email,
+          _replyto: submittedForm.email,
           to: "bryn@mcs.gi",
         }),
       });
@@ -147,7 +149,7 @@ export default function MachinConsultingWebsite() {
         type: "success",
         message: "Thank you. Your message has been sent successfully.",
       });
-      setForm({ name: "", email: "", message: "" });
+      e.currentTarget.reset();
     } catch (error) {
       setStatus({
         type: "error",
@@ -489,15 +491,15 @@ export default function MachinConsultingWebsite() {
               <h2 className="text-xl font-semibold text-slate-950">Send an enquiry</h2>
               <div>
                 <label className="mb-1 block text-sm text-slate-600">Name</label>
-                <input type="text" name="name" required value={form.name} onChange={handleChange} className="w-full rounded-xl border border-slate-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-slate-900" />
+                <input type="text" name="name" required className="w-full rounded-xl border border-slate-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-slate-900" />
               </div>
               <div>
                 <label className="mb-1 block text-sm text-slate-600">Email</label>
-                <input type="email" name="email" required value={form.email} onChange={handleChange} className="w-full rounded-xl border border-slate-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-slate-900" />
+                <input type="email" name="email" required className="w-full rounded-xl border border-slate-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-slate-900" />
               </div>
               <div>
                 <label className="mb-1 block text-sm text-slate-600">Message</label>
-                <textarea name="message" required rows={6} value={form.message} onChange={handleChange} className="w-full rounded-xl border border-slate-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-slate-900" />
+                <textarea name="message" required rows={6} className="w-full rounded-xl border border-slate-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-slate-900" />
               </div>
               {status.message ? (
                 <div
