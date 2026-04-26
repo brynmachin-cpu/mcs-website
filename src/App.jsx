@@ -111,7 +111,8 @@ export default function MachinConsultingWebsite() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const formData = new FormData(e.currentTarget);
+    const formElement = e.currentTarget;
+    const formData = new FormData(formElement);
     const submittedForm = {
       name: formData.get("name") || "",
       email: formData.get("email") || "",
@@ -149,7 +150,7 @@ export default function MachinConsultingWebsite() {
         type: "success",
         message: "Thank you. Your message has been sent successfully.",
       });
-      e.currentTarget.reset();
+      formElement.reset();
     } catch (error) {
       setStatus({
         type: "error",
