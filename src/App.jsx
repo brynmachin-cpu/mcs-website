@@ -500,15 +500,37 @@ export default function MachinConsultingWebsite() {
                 <textarea name="message" required rows={6} value={form.message} onChange={handleChange} className="w-full rounded-xl border border-slate-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-slate-900" />
               </div>
               {status.message ? (
-                <div className={`rounded-2xl px-4 py-3 text-sm ${status.type === "success" ? "bg-emerald-50 text-emerald-700" : "bg-red-50 text-red-700"}`}>
-                  {status.message}
+                <div
+                  className={`rounded-2xl border px-5 py-4 text-sm shadow-sm transition-all duration-500 ${
+                    status.type === "success"
+                      ? "border-emerald-200 bg-emerald-50 text-emerald-800"
+                      : "border-red-200 bg-red-50 text-red-700"
+                  }`}
+                >
+                  <div className="flex items-start gap-3">
+                    <span
+                      className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-sm font-semibold ${
+                        status.type === "success"
+                          ? "bg-emerald-600 text-white animate-pulse"
+                          : "bg-red-600 text-white"
+                      }`}
+                    >
+                      {status.type === "success" ? "✓" : "!"}
+                    </span>
+                    <div>
+                      <div className="font-semibold">
+                        {status.type === "success" ? "Message sent successfully" : "Message not sent"}
+                      </div>
+                      <div className="mt-1 leading-6">{status.message}</div>
+                    </div>
+                  </div>
                 </div>
               ) : null}
               <button type="submit" disabled={isSubmitting} className="rounded-2xl bg-slate-900 px-6 py-3 text-sm font-medium text-white transition hover:bg-slate-800 disabled:cursor-not-allowed disabled:opacity-60">
                 {isSubmitting ? "Sending..." : "Send Message"}
               </button>
               <p className="text-sm text-slate-500">
-                This form is configured for silent submission and can be connected by replacing the placeholder endpoint in the code.
+                
               </p>
             </form>
           </div>
