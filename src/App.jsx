@@ -232,6 +232,7 @@ export default function MachinConsultingWebsite() {
               </h1>
               <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-600">
                 Machin Consulting Services helps organisations bridge the gap between business and technology, translating business needs into structured technical requirements and practical delivery outcomes.
+              Typically engaged when projects are delayed, requirements are unclear, or delivery has stalled.
               </p>
               <div className="mt-8 flex flex-wrap gap-4">
                 <a href="#services" className="rounded-2xl bg-slate-900 px-6 py-3 text-sm font-medium text-white shadow-sm transition hover:bg-slate-800">
@@ -284,6 +285,45 @@ export default function MachinConsultingWebsite() {
           </div>
         </section>
 
+        <section className="border-y border-slate-200 bg-white">
+          <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
+            <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
+              <div>
+                <p className="text-sm font-medium uppercase tracking-[0.2em] text-slate-500">When to get in touch</p>
+                <h2 className="mt-3 text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl">
+                  Typical reasons clients contact MCS
+                </h2>
+                <p className="mt-5 text-lg leading-8 text-slate-600">
+                  If any of these sound familiar, an initial conversation can quickly identify where focused support would add value.
+                </p>
+                <a
+                  href="#contact"
+                  className="mt-8 inline-flex rounded-2xl bg-slate-900 px-6 py-3 text-sm font-medium text-white shadow-sm transition hover:bg-slate-800"
+                >
+                  Discuss Your Project
+                </a>
+              </div>
+              <div className="grid gap-4">
+                {[
+                  "A project is delayed or losing momentum",
+                  "Requirements are unclear or constantly changing",
+                  "Delivery ownership is weak or fragmented",
+                  "Business and technical teams are misaligned",
+                  "Agile delivery is not working as expected",
+                  "Stakeholders need clearer structure and accountability",
+                ].map((item) => (
+                  <div key={item} className="flex items-start gap-3 rounded-2xl bg-slate-50 p-4 text-slate-700">
+                    <span className="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-slate-900 text-xs font-semibold text-white">
+                      ✓
+                    </span>
+                    <span>{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
         <section className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
           <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
             <div className="rounded-[2rem] border border-slate-200 bg-white p-8 shadow-sm">
@@ -294,6 +334,17 @@ export default function MachinConsultingWebsite() {
               <p className="mt-4 text-slate-600 leading-7">
                 His work focuses on helping organisations overcome delivery challenges, clarify requirements, and create strong alignment between business and technical teams.
               </p>
+              <p className="mt-6 text-slate-700 font-medium">
+                20+ years of experience across business analysis, product delivery, and regulated digital environments.
+              </p>
+              <a
+                href="https://www.linkedin.com/in/brynmachin/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-4 inline-flex text-sm font-medium text-slate-900 underline underline-offset-4 transition hover:text-slate-700"
+              >
+                View full professional profile on LinkedIn →
+              </a>
             </div>
 
             <div>
@@ -533,7 +584,7 @@ export default function MachinConsultingWebsite() {
                 {isSubmitting ? "Sending..." : "Send Message"}
               </button>
               <p className="text-sm text-slate-500">
-                
+                We typically respond within 24 hours.
               </p>
             </form>
           </div>
