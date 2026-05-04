@@ -3,6 +3,14 @@ import { useEffect, useState } from "react";
 // 👉 Replace "your-form-id" with your real Formspree form ID
 // Example: https://formspree.io/f/abcd1234
 const CONTACT_FORM_ENDPOINT = "https://formspree.io/f/mdayjvde";
+const LOGO_SRC = "/mcs-logo.png";
+
+const brand = {
+  navy: "#071A2F",
+  blue: "#1268D6",
+  cyan: "#18B7E8",
+  light: "#F5FAFF",
+};
 
 export default function MachinConsultingWebsite() {
   const [page, setPage] = useState("home");
@@ -168,8 +176,8 @@ export default function MachinConsultingWebsite() {
         href={`#${target}`}
         className={`rounded-full px-4 py-2 text-sm font-medium transition ${
           active
-            ? "bg-slate-900 text-white"
-            : "text-slate-600 hover:bg-slate-100 hover:text-slate-900"
+            ? "bg-[#071A2F] text-white shadow-sm"
+            : "text-slate-600 hover:bg-blue-50 hover:text-[#1268D6]"
         }`}
       >
         {children}
@@ -178,13 +186,20 @@ export default function MachinConsultingWebsite() {
   };
 
   const PageShell = ({ children }) => (
-    <div className="min-h-screen bg-slate-50 text-slate-900">
-      <header className="sticky top-0 z-30 border-b border-slate-200 bg-white/90 backdrop-blur">
+    <div className="min-h-screen bg-[#F5FAFF] text-slate-900">
+      <header className="sticky top-0 z-30 border-b border-blue-100 bg-white/95 backdrop-blur">
         <div className="mx-auto flex max-w-7xl flex-col gap-4 px-6 py-4 lg:flex-row lg:items-center lg:justify-between lg:px-8">
-          <div>
-            <div className="text-lg font-semibold tracking-tight">Machin Consulting Services</div>
-            <div className="text-sm text-slate-500">Bridging the gaps between business and tech</div>
-          </div>
+          <a href="#home" className="flex items-center gap-4">
+            <img
+              src={LOGO_SRC}
+              alt="Machin Consulting Services logo"
+              className="h-14 w-auto object-contain"
+            />
+            <div className="hidden sm:block">
+              <div className="text-lg font-semibold tracking-tight text-[#071A2F]">Machin Consulting Services</div>
+              <div className="text-sm text-slate-500">Bridging the gaps between business and tech</div>
+            </div>
+          </a>
           <nav className="flex flex-wrap items-center gap-2">
             <NavLink target="home">Home</NavLink>
             <NavLink target="services">Services Offered</NavLink>
@@ -194,9 +209,16 @@ export default function MachinConsultingWebsite() {
         </div>
       </header>
       {children}
-      <footer className="border-t border-slate-200 bg-white">
-        <div className="mx-auto flex max-w-7xl flex-col gap-3 px-6 py-8 text-sm text-slate-500 md:flex-row md:items-center md:justify-between lg:px-8">
-          <div>© 2026 Machin Consulting Services. All rights reserved.</div>
+      <footer className="border-t border-blue-100 bg-white">
+        <div className="mx-auto flex max-w-7xl flex-col gap-4 px-6 py-8 text-sm text-slate-500 md:flex-row md:items-center md:justify-between lg:px-8">
+          <div className="flex items-center gap-3">
+            <img
+              src={LOGO_SRC}
+              alt="Machin Consulting Services logo"
+              className="h-10 w-auto object-contain"
+            />
+            <span>© 2026 Machin Consulting Services. All rights reserved.</span>
+          </div>
           <div>Gibraltar • Founded 2023</div>
         </div>
       </footer>
@@ -204,13 +226,13 @@ export default function MachinConsultingWebsite() {
   );
 
   const IconBadge = ({ label }) => (
-    <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-slate-100 text-sm font-semibold text-slate-900">
+    <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-blue-50 text-sm font-semibold text-[#1268D6] ring-1 ring-blue-100">
       {label}
     </div>
   );
 
   const IconCard = ({ icon, title, description }) => (
-    <div className="rounded-[2rem] border border-slate-200 bg-white p-8 shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
+    <div className="rounded-[2rem] border border-blue-100 bg-white p-8 shadow-sm transition hover:-translate-y-1 hover:shadow-lg hover:shadow-blue-100/60">
       <IconBadge label={icon} />
       <h2 className="text-xl font-semibold text-slate-950">{title}</h2>
       <p className="mt-4 leading-7 text-slate-600">{description}</p>
@@ -220,11 +242,11 @@ export default function MachinConsultingWebsite() {
   const HomePage = () => (
     <PageShell>
       <main>
-        <section className="relative overflow-hidden border-b border-slate-200 bg-white">
-          <div className="absolute inset-0 bg-gradient-to-br from-slate-100 via-white to-slate-100" />
+        <section className="relative overflow-hidden border-b border-blue-100 bg-white">
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-cyan-50" />
           <div className="relative mx-auto grid max-w-7xl gap-10 px-6 py-24 lg:grid-cols-[1.15fr_0.85fr] lg:px-8 lg:py-32">
             <div className="flex flex-col justify-center">
-              <div className="mb-4 inline-flex w-fit rounded-full border border-slate-300 bg-white px-4 py-1 text-sm text-slate-600 shadow-sm">
+              <div className="mb-4 inline-flex w-fit rounded-full border border-blue-100 bg-white px-4 py-1 text-sm text-[#1268D6] shadow-sm">
                 Business consulting for regulated digital environments
               </div>
               <h1 className="max-w-3xl text-4xl font-semibold tracking-tight text-slate-950 sm:text-5xl lg:text-6xl">
@@ -235,16 +257,16 @@ export default function MachinConsultingWebsite() {
               Typically engaged when projects are delayed, requirements are unclear, or delivery has stalled.
               </p>
               <div className="mt-8 flex flex-wrap gap-4">
-                <a href="#services" className="rounded-2xl bg-slate-900 px-6 py-3 text-sm font-medium text-white shadow-sm transition hover:bg-slate-800">
+                <a href="#services" className="rounded-2xl bg-[#071A2F] px-6 py-3 text-sm font-medium text-white shadow-sm transition hover:bg-[#1268D6]">
                   Explore Services
                 </a>
-                <a href="#contact" className="rounded-2xl border border-slate-300 bg-white px-6 py-3 text-sm font-medium text-slate-700 transition hover:border-slate-400 hover:text-slate-900">
+                <a href="#contact" className="rounded-2xl border border-blue-200 bg-white px-6 py-3 text-sm font-medium text-[#071A2F] transition hover:border-[#1268D6] hover:text-[#1268D6]">
                   Get in Touch
                 </a>
               </div>
             </div>
             <div className="flex items-center">
-              <div className="w-full overflow-hidden rounded-[2rem] border border-slate-200 shadow-xl">
+              <div className="w-full overflow-hidden rounded-[2rem] border border-blue-100 shadow-xl shadow-blue-100/60">
                 <img
                   src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=1200"
                   alt="Business consulting meeting"
@@ -269,12 +291,12 @@ export default function MachinConsultingWebsite() {
                 The consultancy is especially relevant for businesses operating in regulated or technically demanding environments where requirements, communication, and execution need to be handled with care.
               </p>
             </div>
-            <div className="rounded-[2rem] border border-slate-200 bg-white p-8 shadow-sm">
+            <div className="rounded-[2rem] border border-blue-100 bg-white p-8 shadow-sm">
               <h3 className="text-xl font-semibold text-slate-950">What sets MCS apart</h3>
               <div className="mt-6 grid gap-4">
                 {differenceCards.map((item, index) => (
                   <div key={item} className="flex items-start gap-3 rounded-2xl bg-slate-50 p-4 text-slate-700">
-                    <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-slate-900 text-xs font-semibold text-white">
+                    <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#1268D6] text-xs font-semibold text-white">
                       {index + 1}
                     </span>
                     <span>{item}</span>
@@ -285,7 +307,7 @@ export default function MachinConsultingWebsite() {
           </div>
         </section>
 
-        <section className="border-y border-slate-200 bg-white">
+        <section className="border-y border-blue-100 bg-white">
           <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
             <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
               <div>
@@ -313,7 +335,7 @@ export default function MachinConsultingWebsite() {
                   "Stakeholders need clearer structure and accountability",
                 ].map((item) => (
                   <div key={item} className="flex items-start gap-3 rounded-2xl bg-slate-50 p-4 text-slate-700">
-                    <span className="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-slate-900 text-xs font-semibold text-white">
+                    <span className="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#1268D6] text-xs font-semibold text-white">
                       ✓
                     </span>
                     <span>{item}</span>
@@ -326,7 +348,7 @@ export default function MachinConsultingWebsite() {
 
         <section className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
           <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
-            <div className="rounded-[2rem] border border-slate-200 bg-white p-8 shadow-sm">
+            <div className="rounded-[2rem] border border-blue-100 bg-white p-8 shadow-sm">
               <h3 className="text-xl font-semibold text-slate-950">About Bryn Machin</h3>
               <p className="mt-4 text-slate-600 leading-7">
                 Bryn Machin is an experienced consultant specialising in business analysis, product delivery, and project execution within complex and regulated digital environments. With over two decades of experience across financial services and technology-driven organisations, he brings a pragmatic, delivery-focused approach to every engagement.
@@ -341,7 +363,7 @@ export default function MachinConsultingWebsite() {
                 href="https://www.linkedin.com/in/brynmachin/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-4 inline-flex text-sm font-medium text-slate-900 underline underline-offset-4 transition hover:text-slate-700"
+                className="mt-4 inline-flex text-sm font-medium text-[#1268D6] underline underline-offset-4 transition hover:text-[#071A2F]"
               >
                 View full professional profile on LinkedIn →
               </a>
@@ -357,7 +379,7 @@ export default function MachinConsultingWebsite() {
                   "Supported organisations in adopting Agile and improving team performance",
                 ].map((item) => (
                   <div key={item} className="flex items-start gap-3 rounded-2xl bg-slate-50 p-4 text-slate-700">
-                    <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-slate-900 text-xs font-semibold text-white">
+                    <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#1268D6] text-xs font-semibold text-white">
                       ✓
                     </span>
                     <span>{item}</span>
@@ -368,7 +390,7 @@ export default function MachinConsultingWebsite() {
           </div>
         </section>
 
-        <section className="border-y border-slate-200 bg-white">
+        <section className="border-y border-blue-100 bg-white">
           <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
             <div className="max-w-2xl">
               <p className="text-sm font-medium uppercase tracking-[0.2em] text-slate-500">Specialties</p>
@@ -378,7 +400,7 @@ export default function MachinConsultingWebsite() {
             </div>
             <div className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
               {specialties.map((item) => (
-                <div key={item} className="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-4 text-sm font-medium text-slate-700">
+                <div key={item} className="rounded-2xl border border-blue-100 bg-blue-50/60 px-4 py-4 text-sm font-medium text-slate-700">
                   {item}
                 </div>
               ))}
@@ -406,7 +428,7 @@ export default function MachinConsultingWebsite() {
             <IconCard key={service.title} {...service} />
           ))}
         </div>
-        <section className="mt-16 rounded-[2rem] bg-slate-900 p-10 text-white shadow-lg">
+        <section className="mt-16 rounded-[2rem] bg-[#071A2F] p-10 text-white shadow-lg shadow-blue-900/20">
           <div className="grid gap-8 lg:grid-cols-[1fr_0.9fr] lg:items-center">
             <div>
               <p className="text-sm uppercase tracking-[0.2em] text-slate-300">How engagements work</p>
@@ -452,10 +474,10 @@ export default function MachinConsultingWebsite() {
                 Machin Consulting Services provides Agile and Scrum training designed to help teams understand the principles, ceremonies, roles, and behaviours that support effective delivery. The focus is practical application rather than theory alone.
               </p>
               <div className="mt-8 flex flex-wrap gap-4">
-                <a href="#contact" className="rounded-2xl bg-slate-900 px-6 py-3 text-sm font-medium text-white shadow-sm transition hover:bg-slate-800">
+                <a href="#contact" className="rounded-2xl bg-[#071A2F] px-6 py-3 text-sm font-medium text-white shadow-sm transition hover:bg-[#1268D6]">
                   Enquire About Training
                 </a>
-                <a href="#services" className="rounded-2xl border border-slate-300 bg-white px-6 py-3 text-sm font-medium text-slate-700 transition hover:border-slate-400 hover:text-slate-900">
+                <a href="#services" className="rounded-2xl border border-blue-200 bg-white px-6 py-3 text-sm font-medium text-[#071A2F] transition hover:border-[#1268D6] hover:text-[#1268D6]">
                   View Consulting Services
                 </a>
               </div>
@@ -478,7 +500,7 @@ export default function MachinConsultingWebsite() {
           </div>
         </section>
 
-        <section className="border-y border-slate-200 bg-white">
+        <section className="border-y border-blue-100 bg-white">
           <div className="mx-auto grid max-w-7xl gap-10 px-6 py-20 lg:grid-cols-[1fr_0.9fr] lg:px-8">
             <div>
               <p className="text-sm font-medium uppercase tracking-[0.2em] text-slate-500">Who it is for</p>
@@ -508,7 +530,7 @@ export default function MachinConsultingWebsite() {
         </section>
 
         <section className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
-          <div className="rounded-[2rem] bg-slate-900 p-10 text-white shadow-lg">
+          <div className="rounded-[2rem] bg-[#071A2F] p-10 text-white shadow-lg shadow-blue-900/20">
             <div className="grid gap-8 lg:grid-cols-[1fr_0.8fr] lg:items-center">
               <div>
                 <p className="text-sm uppercase tracking-[0.2em] text-slate-300">Flexible delivery</p>
@@ -543,15 +565,15 @@ export default function MachinConsultingWebsite() {
               <h2 className="text-xl font-semibold text-slate-950">Send an enquiry</h2>
               <div>
                 <label className="mb-1 block text-sm text-slate-600">Name</label>
-                <input type="text" name="name" required className="w-full rounded-xl border border-slate-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-slate-900" />
+                <input type="text" name="name" required className="w-full rounded-xl border border-blue-100 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#1268D6]" />
               </div>
               <div>
                 <label className="mb-1 block text-sm text-slate-600">Email</label>
-                <input type="email" name="email" required className="w-full rounded-xl border border-slate-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-slate-900" />
+                <input type="email" name="email" required className="w-full rounded-xl border border-blue-100 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#1268D6]" />
               </div>
               <div>
                 <label className="mb-1 block text-sm text-slate-600">Message</label>
-                <textarea name="message" required rows={6} className="w-full rounded-xl border border-slate-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-slate-900" />
+                <textarea name="message" required rows={6} className="w-full rounded-xl border border-blue-100 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#1268D6]" />
               </div>
               {status.message ? (
                 <div
@@ -580,7 +602,7 @@ export default function MachinConsultingWebsite() {
                   </div>
                 </div>
               ) : null}
-              <button type="submit" disabled={isSubmitting} className="rounded-2xl bg-slate-900 px-6 py-3 text-sm font-medium text-white transition hover:bg-slate-800 disabled:cursor-not-allowed disabled:opacity-60">
+              <button type="submit" disabled={isSubmitting} className="rounded-2xl bg-[#071A2F] px-6 py-3 text-sm font-medium text-white transition hover:bg-[#1268D6] disabled:cursor-not-allowed disabled:opacity-60">
                 {isSubmitting ? "Sending..." : "Send Message"}
               </button>
               <p className="text-sm text-slate-500">
@@ -588,7 +610,7 @@ export default function MachinConsultingWebsite() {
               </p>
             </form>
           </div>
-          <div className="rounded-[2rem] border border-slate-200 bg-slate-950 p-8 text-white shadow-lg">
+          <div className="rounded-[2rem] border border-blue-900 bg-[#071A2F] p-8 text-white shadow-lg shadow-blue-900/20">
             <h2 className="text-2xl font-semibold">Contact Details</h2>
             <div className="mt-8 space-y-6 text-slate-200">
               <div>
