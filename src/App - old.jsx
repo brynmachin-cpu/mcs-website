@@ -20,7 +20,7 @@ export default function MachinConsultingWebsite() {
   useEffect(() => {
     const syncPage = () => {
       const hash = window.location.hash.replace("#", "");
-      if (["home", "services", "training", "rates", "contact"].includes(hash)) {
+      if (["home", "services", "training", "contact"].includes(hash)) {
         setPage(hash);
       } else {
         setPage("home");
@@ -451,12 +451,6 @@ export default function MachinConsultingWebsite() {
                   <div className="text-sm text-slate-400">Commercial approach</div>
                   <div className="mt-1 text-lg">Simple pricing structure with discounts for longer engagements</div>
                 </div>
-                <a
-                  href="#rates"
-                  className="inline-flex text-sm font-medium text-cyan-200 underline underline-offset-4 transition hover:text-white"
-                >
-                  View basic rate guidance →
-                </a>
               </div>
             </div>
           </div>
@@ -555,64 +549,6 @@ export default function MachinConsultingWebsite() {
     </PageShell>
   );
 
-  const RatesPage = () => (
-    <PageShell>
-      <main className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
-        <div className="max-w-3xl">
-          <p className="text-sm font-medium uppercase tracking-[0.2em] text-slate-500">Rate Guidance</p>
-          <h1 className="mt-3 text-4xl font-semibold tracking-tight text-slate-950 sm:text-5xl">
-            Basic rates for consulting engagements.
-          </h1>
-          <p className="mt-6 text-lg leading-8 text-slate-600">
-            The rates below provide a simple starting point for discussing consulting support. Final pricing may vary depending on the nature, scope, urgency, and length of the engagement.
-          </p>
-        </div>
-
-        <section className="mt-12 grid gap-6 md:grid-cols-2">
-          <div className="rounded-[2rem] border border-blue-100 bg-white p-8 shadow-sm">
-            <div className="text-sm font-medium uppercase tracking-[0.2em] text-[#1268D6]">Standard Day Rate</div>
-            <div className="mt-4 text-5xl font-semibold tracking-tight text-[#071A2F]">£795</div>
-            <p className="mt-4 leading-7 text-slate-600">
-              Suitable for full-day consulting, delivery support, workshops, discovery sessions, or focused delivery engagement work.
-            </p>
-          </div>
-
-          <div className="rounded-[2rem] border border-blue-100 bg-white p-8 shadow-sm">
-            <div className="text-sm font-medium uppercase tracking-[0.2em] text-[#1268D6]">Standard Hourly Rate</div>
-            <div className="mt-4 text-5xl font-semibold tracking-tight text-[#071A2F]">£100</div>
-            <p className="mt-4 leading-7 text-slate-600">
-              Suitable for shorter advisory sessions, targeted reviews, requirements support, and ad hoc consulting assistance.
-            </p>
-          </div>
-        </section>
-
-        <section className="mt-10 rounded-[2rem] bg-[#071A2F] p-8 text-white shadow-lg shadow-blue-900/20">
-          <h2 className="text-2xl font-semibold">Flexible engagement pricing</h2>
-          <p className="mt-4 max-w-3xl leading-8 text-slate-300">
-            Rates are negotiable depending on the type and length of the engagement. As outlined in the Services Offered section, support can be provided on a short-term or longer-term basis, with a straightforward commercial approach designed to stay practical, clear, and easy to engage with.
-          </p>
-          <p className="mt-4 max-w-3xl leading-8 text-slate-300">
-            Returning customers will receive a discount in recognition of an ongoing working relationship.
-          </p>
-          <div className="mt-8 flex flex-wrap gap-4">
-            <a
-              href="#contact"
-              className="rounded-2xl bg-white px-6 py-3 text-sm font-medium text-[#071A2F] transition hover:bg-blue-50"
-            >
-              Discuss an Engagement
-            </a>
-            <a
-              href="#services"
-              className="rounded-2xl border border-white/20 px-6 py-3 text-sm font-medium text-white transition hover:bg-white/10"
-            >
-              Back to Services
-            </a>
-          </div>
-        </section>
-      </main>
-    </PageShell>
-  );
-
   const ContactPage = () => (
     <PageShell>
       <main className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
@@ -700,7 +636,6 @@ export default function MachinConsultingWebsite() {
 
   if (page === "services") return <ServicesPage />;
   if (page === "training") return <TrainingPage />;
-  if (page === "rates") return <RatesPage />;
   if (page === "contact") return <ContactPage />;
   return <HomePage />;
 }
